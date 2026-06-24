@@ -1,28 +1,246 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Restaurante Ficticio</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurante Gourmet</title>
 
-  <!-- Bootstrap CSS -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        rel="stylesheet" />
 
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap"
-    rel="stylesheet"
-  />
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet" />
 
-  <!-- Estilos propios -->
-  <link rel="stylesheet" href="css/style.css" />
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
 
-  <script src="js/app.js"></script>
+<body>
+    <!-- ============================= -->
+    <!-- Titulo y navegacion del sitio -->
+    <!-- ============================= -->
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand fs-2" href="#">Restaurante Gourmet</a>
+    
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link fs-4" aria-current="page" href="#">Inicio</a>
+                        <a class="nav-link activo fs-4" href="#">Menú</a>
+                        <a class="nav-link fs-4" href="#">Reseñas</a>
+                        <a class="nav-link fs-4" href="#">Contacto</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+    <!-- ================ -->
+    <!-- Titulo principal -->
+    <!-- ================ -->
+    <div class="container-titulo-principal">
+        <div class="container-blur">
+            <h1 class="titulo-principal display-3">Nuestro Menú</h1>
+        </div>
+    </div>
+    <!-- ================== -->
+    <!-- Bottones categoria -->
+    <!-- ================== -->
+    <div class="d-flex mt-4 justify-content-center gap-2 mb-4 flex-wrap" id="contenedor-filtros">
+        <button class="btn btn-filtro btn-activo" data-categoria="Todos">Todos</button>
+        <button class="btn btn-filtro" data-categoria="Entrada">Entradas</button>
+        <button class="btn btn-filtro" data-categoria="Plato Fuerte">Platos Fuertes</button>
+        <button class="btn btn-filtro" data-categoria="Postre">Postres</button>
+    </div>
+
+    <!-- Platillos -->
+    <div class="contianer-grid-platillos">
+        <section class="platillos row g-4" id="grid-platillo">
+            
+        </section>
+    </div>
+
+    <section class="container-reservas container my-5">
+        <div class="row gx-0 gy-5" id="seccion-reservas">
+
+            <!-- ================================== -->
+            <!-- Seccion de realizacion de reservas -->
+            <!-- ================================== -->
+            <article class="col-12 bg-light p-4 rounded shadow-sm">
+                <h2 class="mb-4 text-dark fw-bold border-bottom pb-2">Realizar Reserva</h2>
+    
+                <form id="form-reserva" novalidate>
+                    <div class="row">
+                        <div class="col-12 col-md-6 mb-3">
+                            <label for="nombre" class="form-label fw-semibold">Nombre Completo:</label>
+                            <input type="text" id="nombre" class="form-control"
+                                placeholder="Ej. Juan Pérez">
+                            <span id="error-nombre" class="error-campo text-danger small"></span>
+                        </div>
+    
+                        <div class="col-12 col-md-6 mb-3">
+                            <label for="correo" class="form-label fw-semibold">Correo
+                                Electrónico:</label>
+                            <input type="email" id="correo" class="form-control"
+                                placeholder="nombre@correo.com">
+                            <span id="error-correo" class="error-campo text-danger small"></span>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-12 col-md-4 mb-3">
+                            <label for="fecha" class="form-label fw-semibold">Fecha de Reserva:</label>
+                            <input type="date" id="fecha" class="form-control">
+                            <span id="error-fecha" class="error-campo text-danger small"></span>
+                        </div>
+    
+                        <div class="col-12 col-md-4 mb-3">
+                            <label for="hora" class="form-label fw-semibold">Hora de
+                                Preferencia:</label>
+                            <select id="hora" class="form-select">
+                                <option value="12:00">12:00 MD</option>
+                                <option value="13:00">1:00 PM</option>
+                                <option value="18:00">6:00 PM</option>
+                                <option value="19:00">7:00 PM</option>
+                                <option value="20:00">8:00 PM</option>
+                            </select>
+                        </div>
+    
+                        <div class="col-12 col-md-4 mb-3">
+                            <label for="personas" class="form-label fw-semibold">Número de Personas
+                                (1-20):</label>
+                            <input type="number" id="personas" class="form-control" min="1" max="20"
+                                value="1">
+                            <span id="error-personas" class="error-campo text-danger small"></span>
+                        </div>
+                    </div>
+    
+                    <div class="mb-4">
+                        <label for="comentarios" class="form-label fw-semibold">Comentarios / Notas
+                            Especiales:</label>
+                        <textarea id="comentarios" class="form-control" rows="3"
+                            placeholder="Alergias, espacio preferido, etc."></textarea>
+                    </div>
+    
+                    <button type="submit" id="btn-submit" class="btn btn-warning w-100 fw-bold py-2"
+                        disabled>Confirmar Reserva</button>
+                </form>
+            </article>
+
+            <!-- ============================ -->
+            <!-- Seccion de lista de reservas -->
+            <!-- ============================ -->
+            <article class="col-12 mt-4" id="reserva-registradas">
+                <h2 class="mb-4 text-dark fw-bold border-bottom pb-2">Reservas Registradas</h2>
+    
+                <div class="table-responsive shadow-sm rounded">
+                    <table class="table table-hover mb-0"
+                        style="width: 100%; border-collapse: collapse;">
+                        <thead class="bg-dark text-white">
+                            <tr>
+                                <th class="p-3 text-start">Nombre</th>
+                                <th class="p-3 text-start">Correo</th>
+                                <th class="p-3 text-start">Fecha / Hora</th>
+                                <th class="p-3 text-center">Personas</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-reservas-body"></tbody>
+                    </table>
+                </div>
+    
+                <div class="resumen-reservas p-4 mt-4 bg-dark text-white rounded shadow">
+                    <h4 class="mb-3 border-bottom pb-2 text-warning">Resumen de Operaciones</h4>
+                    <div class="row text-center">
+                
+                        <div class="col-4">
+                            <span class="d-block small text-white-50 text-uppercase fw-semibold">Cantidad de
+                                reservas</span>
+                            <strong class="fs-2 d-block text-warning mt-1" id="resumen-total">0</strong>
+                        </div>
+                
+                        <div class="col-4">
+                            <span class="d-block small text-white-50 text-uppercase fw-semibold">Personas
+                                esperadas</span>
+                            <strong class="fs-2 d-block text-warning mt-1" id="resumen-personas">0</strong>
+                        </div>
+                
+                        <div class="col-4">
+                            <span class="d-block small text-white-50 text-uppercase fw-semibold">Reserva con mayor
+                                cantidad</span>
+                            <span class="fs-5 fw-bold d-block text-truncate text-warning mt-2"
+                                id="resumen-mayor">Ninguna</span>
+                        </div>
+                
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer class="bg-dark text-white pt-5 pb-3 mt-5 border-top border-warning border-3">
+    <div class="container px-4 px-md-0">
+        <div class="row align-items-start gy-4">
+
+            <div class="col-12 col-md-4">
+                <h5 class="text-warning fw-bold text-uppercase mb-3">Sabor & Estilo</h5>
+                <p class="text-white-50 small-text mb-0" style="line-height: 1.6;">
+                    Brindamos la mejor experiencia gastronómica con ingredientes frescos y un
+                    servicio excepcional. Tu mesa ideal, a solo unos clics de distancia.
+                </p>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 ps-md-5">
+                <h5 class="text-warning fw-bold text-uppercase mb-3">Enlaces útiles</h5>
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-2"><a href="#grid-platillo"
+                            class="text-white-50 text-decoration-none footer-link">Nuestro Menú</a>
+                    </li>
+                    <li class="mb-2"><a href="#seccion-reservas"
+                            class="text-white-50 text-decoration-none footer-link">Realizar
+                            Reserva</a></li>
+                    <li class="mb-2"><a href="#"
+                            class="text-white-50 text-decoration-none footer-link">Términos de
+                            Servicio</a></li>
+                </ul>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+                <h5 class="text-warning fw-bold text-uppercase mb-3">Contacto</h5>
+                <ul class="list-unstyled text-white-50 small mb-0" style="line-height: 1.6;">
+                    <li class="mb-2">📍 San José, Costa Rica</li>
+                    <li class="mb-2">📞 +506 2222-3333</li>
+                    <li class="mb-2">✉️ soporte@restaurante.com</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <hr class="bg-secondary mt-4 mb-3 opacity-25">
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <p class="text-white-50 small mb-0">&copy; 2026 Sabor & Estilo. Todos los derechos
+                    reservados.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="js/app.js"></script>
 
 </body>
+
 </html>

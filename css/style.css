@@ -1,28 +1,150 @@
 :root {
-  /* ─── Paleta de colores ─────────────────────────
+    /* ─── Paleta de colores ─────────────────────────
      TODO: Podés cambiar estos valores para personalizar
      el tema de tu restaurante
   ─────────────────────────────────────────────── */
-  --color-primario:    #2C3E50;
-  --color-secundario:  #E67E22;
-  --color-fondo:       #FAF8F5;
-  --color-texto:       #333333;
-  --color-claro:       #FFFFFF;
-  --color-reserva-vip: #FFF3CD; /* fondo para grupos de 6+ personas */
+    --color-primario: #2C3E50;
+    --color-secundario: #E67E22;
+    --color-fondo: #FAF8F5;
+    --color-texto: #333333;
+    --color-claro: #FFFFFF;
+    --color-reserva-vip: #FFF3CD;
+    /* fondo para grupos de 6+ personas */
+    --color-error: #E74C3C;
 
-  --fuente-titulo: 'Playfair Display', serif;
-  --fuente-cuerpo: 'Lato', sans-serif;
+    --fuente-titulo: 'Playfair Display', serif;
+    --fuente-cuerpo: 'Lato', sans-serif;
+
 }
 
 /* ─── RESET Y BASE ─── */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: var(--fuente-cuerpo);
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
+    font-family: var(--fuente-cuerpo);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+.navbar {
+    background-color: var(--color-primario) !important;
+}
+
+.navbar-brand {
+    font-size: 2.5rem !important;
+    font-weight: 800;
+    padding-left: 20rem;
+    color: var(--color-claro);
+    font-family: var(--fuente-titulo);
+}
+
+.navbar-brand:hover {
+    color: var(--color-claro);
+}
+
+.navbar-nav a:last-child {
+    margin-right: 20rem;
+}
+
+.nav-link {
+    margin-right: 1rem;
+    color: var(--color-claro);
+    font-family: var(--fuente-titulo);
+}
+
+.activo {
+    color: var(--color-secundario);
+}
+
+.activo:hover {
+    color: var(--color-secundario);
+}
+
+.container-titulo-principal {
+    height: 10rem;
+    background-image: url(../img/Fondo.jpg);
+    background-size: cover;
+    backdrop-filter: blur(5px);
+}
+
+.container-blur {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px);
+}
+
+.titulo-principal {
+    align-items: center;
+    font-family: var(--fuente-titulo);
+    color: var(--color-claro);
+    font-weight: 700;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.contianer-grid-platillos {
+    display: flex;
+    justify-content: center;
+}
+
+.platillos {
+    width: 70%;
+}
+
+.btn-filtro {
+    border: 1px solid var(--color-texto);
+    border-radius: 30px;
+    padding: 0.5rem 1rem;
+}
+
+.btn:hover {
+    background-color: var(--color-primario);
+    color: var(--color-claro);
+}
+
+.btn-activo {
+    border: 2px solid var(--color-secundario);
+    color: var(--color-secundario);
+    font-weight: 700;
+}
+
+.btn-activo:hover {
+    background-color: var(--color-secundario);
+    color: var(--color-claro);
+}
+
+.container-reservas {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+@media (max-width: 767.98px) {
+    .platillos {
+        width: 85%;
+    }
+
+    .navbar-brand {
+        font-weight: 800;
+        padding-left: 1rem;
+        font-size: 1.5rem;
+
+    }
+
+    .navbar-nav a:last-child {
+        margin-right: 7rem;
+    }
+
+    .container-titulo-principal {
+        height: 8rem;
+    }
 }
